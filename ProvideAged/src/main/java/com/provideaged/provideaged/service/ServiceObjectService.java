@@ -1,6 +1,7 @@
 package com.provideaged.provideaged.service;
 
 import com.provideaged.provideaged.entity.ServiceObject;
+import com.provideaged.provideaged.entity.User;
 
 import java.util.List;
 

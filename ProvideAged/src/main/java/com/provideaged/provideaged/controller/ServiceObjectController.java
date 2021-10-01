@@ -1,10 +1,12 @@
 package com.provideaged.provideaged.controller;
 
 import com.provideaged.provideaged.entity.ServiceObject;
+import com.provideaged.provideaged.entity.User;
 import com.provideaged.provideaged.service.ServiceObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import javax.validation.Valid;
 import java.sql.Timestamp;
 
@@ -33,7 +35,7 @@ public class ServiceObjectController {
     }
 
     @PostMapping("/save")
-    public void saveServiceObject(@RequestBody @Valid ServiceObject serviceObject) {
+    public void saveServiceObject(@Valid @RequestBody ServiceObject serviceObject) {
         serviceObject.setTime_modify(new Timestamp(System.currentTimeMillis()));
         serviceObjectService.save(serviceObject);
     }

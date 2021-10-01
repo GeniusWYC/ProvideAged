@@ -1,6 +1,7 @@
 package com.provideaged.provideaged.service;
 
 import com.provideaged.provideaged.entity.ServicePersonnel;
+import com.provideaged.provideaged.entity.User;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -10,7 +11,7 @@ public interface ServicePersonnelService {
 
     ServicePersonnel queryByUsername(String username);
 
-    void save(ServicePersonnel servicePersonnel);
+    void save(ServicePersonnel servicePersonnel, User user);
 
     void deleteByUsername(String username);
 

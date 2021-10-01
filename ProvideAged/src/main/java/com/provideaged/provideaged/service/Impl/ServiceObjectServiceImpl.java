@@ -1,7 +1,9 @@
 package com.provideaged.provideaged.service.Impl;
 
 import com.provideaged.provideaged.dao.ServiceObjectDao;
+import com.provideaged.provideaged.dao.UserDao;
 import com.provideaged.provideaged.entity.ServiceObject;
+import com.provideaged.provideaged.entity.User;
 import com.provideaged.provideaged.service.ServiceObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,8 @@ import java.util.List;
 public class ServiceObjectServiceImpl implements ServiceObjectService {
     @Autowired
     ServiceObjectDao serviceObjectDao;
+
+
 
     @Override
     public List<ServiceObject> findAll(int pageNumber,int pageSize) {

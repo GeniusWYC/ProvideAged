@@ -1,6 +1,8 @@
 package com.provideaged.provideaged.controller;
 
+import com.provideaged.provideaged.entity.ServiceObject;
 import com.provideaged.provideaged.entity.ServicePersonnel;
+import com.provideaged.provideaged.entity.User;
 import com.provideaged.provideaged.service.ServicePersonnelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +33,11 @@ public class ServicePersonnelController {
     }
 
     @PostMapping("/save")
-    public void saveServicePersonnel(@RequestBody @Valid ServicePersonnel servicePersonnel){
+    public void saveServicePersonnel(@RequestBody SaveParam saveParam){
+        ServicePersonnel servicePersonnel = saveParam.getServicePersonnel();
+        User user = saveParam.getUser();
         servicePersonnel.setTime_modify(new Timestamp(System.currentTimeMillis()));
-        servicePersonnelService.save(servicePersonnel);
+        servicePersonnelService.save(servicePersonnel,user);
     }
 
     @DeleteMapping("/delete")
@@ -62,4 +66,24 @@ public class ServicePersonnelController {
         servicePersonnelService.updatePhoto(servicePersonnel);
     }
 
+}
+class SaveParam{
+    private User user;
+    private ServicePersonnel servicePersonnel;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ServicePersonnel getServicePersonnel() {
+        return servicePersonnel;
+    }
+
+    public void setServicePersonnel(ServicePersonnel servicePersonnel) {
+        this.servicePersonnel = servicePersonnel;
+    }
 }

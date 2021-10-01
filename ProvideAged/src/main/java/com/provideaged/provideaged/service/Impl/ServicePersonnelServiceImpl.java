@@ -1,7 +1,9 @@
 package com.provideaged.provideaged.service.Impl;
 
 import com.provideaged.provideaged.dao.ServicePersonnelDao;
+import com.provideaged.provideaged.dao.UserDao;
 import com.provideaged.provideaged.entity.ServicePersonnel;
+import com.provideaged.provideaged.entity.User;
 import com.provideaged.provideaged.service.ServicePersonnelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +25,9 @@ public class ServicePersonnelServiceImpl implements ServicePersonnelService {
     @Autowired
     ServicePersonnelDao servicePersonnelDao;
 
+    @Autowired
+    UserDao userDao;
+
     @Override
     public List<ServicePersonnel> findAll(int pageNumber,int pageSize) {
         Sort sort = Sort.by(Sort.Direction.ASC,"id");
@@ -36,8 +41,9 @@ public class ServicePersonnelServiceImpl implements ServicePersonnelService {
     }
 
     @Override
-    public void save(ServicePersonnel servicePersonnel) {
+    public void save(ServicePersonnel servicePersonnel, User user) {
         servicePersonnelDao.save(servicePersonnel);
+        userDao.save(user);
     }
 
     @Override
